@@ -52,7 +52,7 @@ export default function Searchfield() {
                 type="text"
                 className="bg-gray-50 border border-gray-500 h-full pl-3 pr-10 w-full "
             />
-            <ul className="bg-gray-50 border border-gray-500">
+            <ul className="bg-gray-50 border border-gray-500 relative z-10">
                 {suggestions.map((suggestion, index) => (
                     <li key={`${suggestion.name}-${index}`}>
                         <button

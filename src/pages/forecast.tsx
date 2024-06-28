@@ -25,7 +25,7 @@ import { WeatherData } from "@/types/types";
 
 const Forecast: React.FC = () => {
     const router = useRouter();
-    const { lat, lon , index} = router.query;
+    const { lat, lon, index } = router.query;
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
     const [error, setError] = useState<Error | null>(null);
     const [isPending, setIsPending] = useState<boolean>(true);
@@ -117,11 +117,11 @@ const Forecast: React.FC = () => {
                 </div>
 
                 {/* hourly weather data (horizontal scrolling) */}
-                <div className="bg-gray-50 container border pt-4 px-4 rounded-md mx-auto flex gap-10 pb-4 items-center mt-5 overflow-x-auto w-[800px]">
-                    {weatherData?.list.slice(safeIndex * 8 , (safeIndex * 8) + 8).map((item, i) => (
+                <div className="bg-gray-50 container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
+                    {weatherData?.list.slice(safeIndex * 8, (safeIndex * 8) + 8).map((item, i) => (
                         <div
                             key={i}
-                            className="flex flex-col justify-between gap-1 items-center text-xs font-medium min-w-[60px]"
+                            className="flex flex-col justify-between gap-1 items-center text-xs font-medium min-w-[60px] md:min-w-[80px]"
                         >
                             <p className="whitespace-nowrap">
                                 {format(parseISO(item.dt_txt), "HH:mm")}
