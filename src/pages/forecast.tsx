@@ -9,7 +9,7 @@ import { format, fromUnixTime, parseISO } from "date-fns";
 /* Components */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/Searchbar';
 import Weatherimage from "@/components/Weatherimage";
 import Container from "@/components/Container";
 import Widgets from "@/components/Widgets";
@@ -23,7 +23,7 @@ import { speedConverter } from "@/utils/speedConverter";
 import { WeatherData } from "@/types/types";
 
 
-const Forecast: React.FC = () => {
+export default function Forecast() {
     const router = useRouter();
     const { lat, lon, index } = router.query;
     const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -159,6 +159,4 @@ const Forecast: React.FC = () => {
             <Footer />
         </div>
     );
-};
-
-export default Forecast;
+}

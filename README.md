@@ -3,7 +3,7 @@
 ## Testing
 
 -Coverage
-In den Unit-Tests, testen wir alle Utils/Helper sowie den Gesamnten Pokemon Context.
+In den Unit-Tests, testen wir alle Utils/Helper mit vitest.
 
 -Ausführen
 E2E  => npx playwright test

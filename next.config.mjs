@@ -1,11 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
   images: {
     remotePatterns: [
-      { hostname: 'openweathermap.org' },
+      {
+        protocol: 'https',
+        hostname: 'openweathermap.org',
+      },
     ],
   },
-};
-
-export default nextConfig;
+}

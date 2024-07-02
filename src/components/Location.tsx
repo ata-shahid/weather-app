@@ -1,6 +1,7 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { useRouter } from 'next/router';
 
+
 export default function LocationButton() {
 
     const router = useRouter();
@@ -11,7 +12,7 @@ export default function LocationButton() {
                 (position) => {
                     const { latitude, longitude } = position.coords;
                     const currentQuery = { ...router.query };
-                    const newQuery = {...currentQuery,lat: latitude,lon: longitude};
+                    const newQuery = { ...currentQuery, lat: latitude, lon: longitude };
                     router.push({
                         pathname: '/forecast',
                         query: newQuery,

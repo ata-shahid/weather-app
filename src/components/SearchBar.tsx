@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import Searchfield from "./SearchField";
+import Searchfield from "./Searchfield";
 import LocationButton from './Location';
 import CalendarButton from './Calendar';
 

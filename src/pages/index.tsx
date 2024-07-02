@@ -4,7 +4,7 @@
 /* Components */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/Searchbar';
 
 
 const Home = () => {

@@ -1,8 +1,14 @@
 import { cn } from "@/utils/cn";
 
 
-export default function Container(props:React.HTMLProps<HTMLDivElement>) {
-    return(
-        <div {...props} className={cn("max-w-[800px] text-xs font-bold flex flex-wrap justify-around items-center gap-6 py-2 bg-gray-100", props.className)}/>
-    );
+export default function Container(props: React.HTMLProps<HTMLDivElement>) {
+  return (
+    <div
+      {...props}
+      className={cn(
+        "max-w-[900px] text-xs font-bold flex flex-wrap justify-around items-center gap-4 bg-white/20 rounded drop-shadow-lg py-4 px-6",
+        props.className
+      )}
+    />
+  );
 }
