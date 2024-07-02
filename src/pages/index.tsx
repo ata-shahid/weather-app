@@ -4,7 +4,8 @@
 /* Components */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SearchBar from '@/components/Searchbar';
+import Searchbar from '@/components/SearchBar';
+
 
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
       <Header />
       <main className="flex-grow flex flex-col items-center">
         <div>
-          <SearchBar />
+          <Searchbar />
         </div>
       </main>
       <Footer />

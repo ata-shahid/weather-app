@@ -9,7 +9,7 @@ import { format, fromUnixTime, parseISO } from "date-fns";
 /* Components */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SearchBar from '@/components/Searchbar';
+
 import Weatherimage from "@/components/Weatherimage";
 import Container from "@/components/Container";
 import Widgets from "@/components/Widgets";
@@ -21,6 +21,7 @@ import { kilometerConverter } from "@/utils/kilometerConverter";
 import { speedConverter } from "@/utils/speedConverter";
 
 import { WeatherData } from "@/types/types";
+import Searchbar from '@/components/SearchBar';
 
 
 export default function Forecast() {
@@ -72,7 +73,7 @@ export default function Forecast() {
             <Header />
             <main className="flex-grow flex flex-col items-center px-2">
                 <div>
-                    <SearchBar />
+                    <Searchbar />
                 </div>
                 {/* Day and Date */}
                 <div className="bg-white border rounded-md shadow-sm mt-5 py-2 w-[500px] max-w-full flex flex-col mx-auto">
@@ -117,8 +118,8 @@ export default function Forecast() {
                 </div>
 
                 {/* hourly weather data (horizontal scrolling) */}
-                <div className="bg-white container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
-                    {weatherData?.list.slice(safeIndex * 8, (safeIndex * 8) + 8).map((item, i) => (
+                <div className="bg-gray-50 container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
+                    {weatherData?.list.slice(0,12).map((item, i) => ( // 36 hours forecast
                         <div
                             key={i}
                             className="flex flex-col justify-between gap-1 items-center text-xs font-medium min-w-[60px] md:min-w-[80px]"
