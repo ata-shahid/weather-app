@@ -1,4 +1,5 @@
 import { TiWeatherPartlySunny } from "react-icons/ti";
+import Link from "next/link";
 
 
 type Props = {};
@@ -11,7 +12,7 @@ export default function Navbar({ }: Props) {
           <div className="flex items-center justify-center">
             <TiWeatherPartlySunny className="text-3xl font-bold" />
           </div>
-          <a href="http://localhost:3000" className="text-3xl font-bold">HSRM-Wetter-App</a>
+          <Link href="http://localhost:3000" className="text-3xl font-bold">HSRM-Wetter-App</Link>
         </div>
       </div>
     </header>
