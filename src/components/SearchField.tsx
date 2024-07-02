@@ -1,7 +1,8 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { suggestionType } from '@/types/types';
 import { IoSearch } from "react-icons/io5";
+import useDebounce from '@/hooks/useDebounce';
 
 
 export default function Searchfield() {
@@ -9,10 +10,18 @@ export default function Searchfield() {
     const [error, setError] = useState<string>("");
     const [suggestions, setSuggestions] = useState<suggestionType[]>([]);
     const [, setCity]=useState<string>('');   //state to store city name
-    const router = useRouter();
+    const debouncedValue = useDebounce(inputValue, 500);
 
-    const getSearchSuggestions = (value: string) => {
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
+    const router = useRouter();
+    // Fetch suggestions based on the debounced value. Debouncing is done to reduce the number of API calls. This improves performance.
+    useEffect(() => {
+        if (debouncedValue.trim() === '') {
+            setSuggestions([]);
+            setError('');
+            return;
+        }
+    
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${debouncedValue.trim()}&limit=5&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
             .then((res) => res.json())
             .then((data) => {
                 const uniqueNames = new Set();
@@ -31,19 +40,14 @@ export default function Searchfield() {
                 setSuggestions(mappedData);
             })
             .catch((error) => console.error("Error fetching data:", error));
-    }
-
+    }, [debouncedValue]);
+    
+    //updated handleInputChange function
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInputValue(value);
-        if (value.trim() === '') {
-            setSuggestions([]);
-            setError('');
-            return;
-        }
-        getSearchSuggestions(value);
         setError('');
-    }
+    };
 
     const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
