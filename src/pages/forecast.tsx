@@ -72,7 +72,7 @@ export default function Forecast() {
                     <Searchbar />
                 </div>
                 {/* Day and Date */}
-                <div className="bg-gray-50 border rounded-md shadow-sm mt-5 py-2 w-[500px] max-w-full flex flex-col mx-auto">
+                <div className="bg-white border rounded-md shadow-sm mt-5 py-2 w-[500px] max-w-full flex flex-col mx-auto">
                     <div className="space-y-2">
                         <h2 className="flex gap-1 text-xl justify-center items-end">
                             <p>{format(parseISO(wData?.dt_txt ?? ""), "EEEE")}</p>
@@ -82,7 +82,7 @@ export default function Forecast() {
                 </div>
 
                 {/* weather basic widget */}
-                <div className="bg-gray-50 border rounded-md shadow-sm mt-5 p-4 w-[500px] max-w-full flex flex-col mx-auto">
+                <div className="bg-white border rounded-md shadow-sm mt-5 p-4 w-[500px] max-w-full flex flex-col mx-auto">
                     <div className="flex justify-between items-start">
                         <div>
                             <p className="text-lg font-semibold">{city}</p>
@@ -114,8 +114,8 @@ export default function Forecast() {
                 </div>
 
         {/* hourly weather data (horizontal scrolling) */}
-        <div className="bg-gray-50 container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
-          {weatherData?.list.slice(0, 12).map((item, i) => ( // 36 hours forecast to show scrolling
+        <div className="bg-white container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
+          {weatherData?.list.slice(safeIndex * 8, (safeIndex * 8) + 8).map((item, i) => ( // scrolling in Mobile Version ;)
             <div
               key={i}
               className="flex flex-col justify-between gap-1 items-center text-xs font-medium min-w-[60px] md:min-w-[80px]"

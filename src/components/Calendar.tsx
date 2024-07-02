@@ -34,7 +34,7 @@ export default function CalendarButton({ selectedDate, setSelectedDate }: Calend
         }, undefined, { shallow: false });
       }
     }
-    setShowDatePicker(false);
+    //setShowDatePicker(false);
   };
 
   const today = new Date();
@@ -47,7 +47,10 @@ export default function CalendarButton({ selectedDate, setSelectedDate }: Calend
         onClick={() => router.query.lat && router.query.lon && setShowDatePicker(!showDatePicker)}
       />
       {showDatePicker && (
-        <DatePicker className="text-center max-w-24" selected={selectedDate} onChange={handleDateChange} minDate={today} maxDate={fourDaysLater} />
+        <DatePicker className="text-center max-w-12" 
+        selected={selectedDate} onChange={handleDateChange} 
+        minDate={today} maxDate={fourDaysLater} 
+        dateFormat="dd.MM" inline/> 
       )}
     </>
   );
