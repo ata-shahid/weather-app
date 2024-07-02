@@ -83,35 +83,67 @@ export default function Searchfield() {
       
 
     const onSuggestionSelect = (suggestion: suggestionType) => {
-        setInputValue(`${suggestion.name}, ${suggestion.country}`);
+        const city = `${suggestion.name}, ${suggestion.country}`;
+        setInputValue(city);
         setSuggestions([]);
         setError('');
+        fetchWeatherDataAndNavigate(city); // Fetch weather data and navigate to the forecast page (click and get data immediately)
     }
+
+    // Function to fetch weather data and navigate to the forecast page
+    const fetchWeatherDataAndNavigate = async (location: string) => {
+        try {
+            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location.trim()}&limit=1&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`);
+            const data = await response.json();
+            if (data.length === 0) {
+                setError("No suggestions found. Please enter a valid location.");
+                return;
+            }
+    
+            const { lat, lon } = data[0];
+            const currentQuery = { ...router.query };
+            const newQuery = { ...currentQuery, lat, lon, city: location };
+    
+            setCity(location);
+            router.push({
+                pathname: '/forecast',
+                query: newQuery,
+            });
+        } catch (error) {
+            setError("An error occurred. Please try again.");
+            console.error("Error fetching data:", error);
+        }
+    
+        setInputValue("");
+        setSuggestions([]);
+    }
+    
 
     const handleInputFocus = (e: React.FocusEvent<HTMLInputElement>) => {
         setError('');
     }
 
+
         return (
-            <form onSubmit={handleOnSubmit} className="relative items-center h-10 w-full max-w-lg border" >
+            <form onSubmit={handleOnSubmit} className="relative items-center h-10 w-full max-w-lg border rounded-md" >
             <input
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
                 value={inputValue}
                 type="text"
-                className="bg-gray-50 border border-gray-500 h-full pl-3 pr-10 w-full "
+                className="bg-gray-50 border border-gray-500 h-full pl-3 pr-10 w-full rounded-md"
             />
             <button type="submit" className="absolute right-0 top-0 h-full px-3 flex items-center justify-center">
                 <IoSearch className="text-gray-500 text-xl" />
             </button>
-            <ul className="bg-gray-50 border border-gray-500 relative z-10">
+            <ul className="bg-gray-50 border border-gray-500 relative z-10 top-auto rounded-md">
                 {error && suggestions.length < 1 && (
                 <li className="text-red-600 p-1 ">{error}</li>
                 )}
                 {suggestions.map((suggestion, index) => (
                 <li key={`${suggestion.name}-${index}`}>
                     <button
-                    className="hover:bg-gray-700 w-full text-left hover:text-white text-sm"
+                    className="hover:bg-gray-700 w-full text-left hover:text-white text-sm rounded-sm"
                     type="button"
                     onClick={() => onSuggestionSelect(suggestion)}
                     >

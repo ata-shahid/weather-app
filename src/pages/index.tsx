@@ -13,9 +13,9 @@ const Home = () => {
   console.log("This is Home");
   
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-gray-100">
+    <div className="min-h-screen flex flex-col justify-between bg-gray-100 ">
       <Header />
-      <main className="flex-grow flex flex-col items-center">
+      <main className="flex-grow flex flex-col items-center ">
         <div>
           <Searchbar />
         </div>

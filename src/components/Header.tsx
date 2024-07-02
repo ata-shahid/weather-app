@@ -11,7 +11,7 @@ export default function Navbar({}: Props) {
           <div className="flex items-center justify-center">
             <TiWeatherPartlySunny className="text-3xl font-bold" />
           </div>
-          <Link href="http://localhost:3000" className="text-3xl font-bold text-white">HSRM-Wetter-App</Link>
+          <Link href={"http://localhost:3000"} className="text-3xl font-bold text-white">HSRM-Wetter-App</Link>
         </div>
       </div>
     </nav>
