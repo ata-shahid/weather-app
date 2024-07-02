@@ -50,7 +50,7 @@ export default function Forecast() {
   }, [lat, lon, index]);
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return <div className="flex items-center min-h-screen justify-center animate-bounce">Loading...</div>;
   }
 
   if (error) {
