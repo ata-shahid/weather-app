@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /* Libraries */
 import React, { useEffect, useState } from 'react';
@@ -26,7 +26,7 @@ export default function Forecast() {
   const { lat, lon, index, city } = router.query;
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [isPending, setIsPending] = useState<boolean>(true);
+  const [isPending, setIsPending] = useState<boolean>(true); // Loading state
 
   useEffect(() => {
     if (lat && lon) {

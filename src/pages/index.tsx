@@ -1,6 +1,4 @@
 
-"use client";
-
 /* Components */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

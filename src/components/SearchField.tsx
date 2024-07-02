@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { suggestionType } from '@/types/types';
@@ -10,7 +12,8 @@ export default function Searchfield() {
     const [error, setError] = useState<string>("");
     const [suggestions, setSuggestions] = useState<suggestionType[]>([]);
     const [, setCity]=useState<string>('');   //state to store city name
-    const debouncedValue = useDebounce(inputValue, 500);
+    
+    const debouncedValue = useDebounce(inputValue, 500); // Debounce the input value to reduce the number of API calls
 
     const router = useRouter();
     // Fetch suggestions based on the debounced value. Debouncing is done to reduce the number of API calls. This improves performance.
