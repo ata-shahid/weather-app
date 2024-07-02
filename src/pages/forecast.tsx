@@ -1,4 +1,3 @@
-
 "use client";
 
 /* Libraries */
@@ -9,7 +8,6 @@ import { format, fromUnixTime, parseISO } from "date-fns";
 /* Components */
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
 import Weatherimage from "@/components/Weatherimage";
 import Container from "@/components/Container";
 import Widgets from "@/components/Widgets";
@@ -23,60 +21,58 @@ import { speedConverter } from "@/utils/speedConverter";
 import { WeatherData } from "@/types/types";
 import Searchbar from '@/components/SearchBar';
 
-
 export default function Forecast() {
-    const router = useRouter();
-    const { lat, lon, index } = router.query;
-    const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-    const [error, setError] = useState<Error | null>(null);
-    const [isPending, setIsPending] = useState<boolean>(true);
+  const router = useRouter();
+  const { lat, lon, index, city } = router.query;
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [isPending, setIsPending] = useState<boolean>(true);
 
-    useEffect(() => {
-        if (lat && lon) {
-            const forecastIndex = index ? Number(index) : 0;
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
-                .then((res) => {
-                    if (!res.ok) {
-                        throw new Error("Failed to fetch weather data");
-                    }
-                    return res.json();
-                })
-                .then((data) => {
-                    setWeatherData(data);
-                    setIsPending(false);
-                })
-                .catch((error) => {
-                    setError(error);
-                    setIsPending(false);
-                });
-        }
-    }, [lat, lon, index]);
-
-    if (isPending) {
-        return <div>Loading...</div>;
+  useEffect(() => {
+    if (lat && lon) {
+      const forecastIndex = index ? Number(index) : 0;
+      fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Failed to fetch weather data");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setWeatherData(data);
+          setIsPending(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setIsPending(false);
+        });
     }
+  }, [lat, lon, index]);
 
-    if (error) {
-        return <div>Error: {error.message}</div>;
-    }
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
 
-    if (!weatherData) {
-        return <div>No weather data available</div>;
-    }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-    const safeIndex = Number(index ?? 0);
-    const wData = weatherData?.list[safeIndex * 8];
-    const cityName = weatherData?.city.name;
+  if (!weatherData) {
+    return <div>No weather data available</div>;
+  }
+
+  const safeIndex = Number(index ?? 0);
+  const wData = weatherData?.list[safeIndex * 8];
 
     return (
         <div className="min-h-screen flex flex-col justify-between bg-gray-100">
             <Header />
-            <main className="flex-grow flex flex-col items-center px-2">
+            <main className="flex-grow flex flex-col items-center">
                 <div>
                     <Searchbar />
                 </div>
                 {/* Day and Date */}
-                <div className="bg-white border rounded-md shadow-sm mt-5 py-2 w-[500px] max-w-full flex flex-col mx-auto">
+                <div className="bg-gray-50 border rounded-md shadow-sm mt-5 py-2 w-[500px] max-w-full flex flex-col mx-auto">
                     <div className="space-y-2">
                         <h2 className="flex gap-1 text-xl justify-center items-end">
                             <p>{format(parseISO(wData?.dt_txt ?? ""), "EEEE")}</p>
@@ -86,10 +82,10 @@ export default function Forecast() {
                 </div>
 
                 {/* weather basic widget */}
-                <div className="bg-white border rounded-md shadow-sm mt-5 p-4 w-[500px] max-w-full flex flex-col mx-auto">
+                <div className="bg-gray-50 border rounded-md shadow-sm mt-5 p-4 w-[500px] max-w-full flex flex-col mx-auto">
                     <div className="flex justify-between items-start">
                         <div>
-                            <p className="text-lg font-semibold">{cityName}</p>
+                            <p className="text-lg font-semibold">{city}</p>
                             <p className="mt-1">
                                 {celsiusConverter(wData?.main.temp ?? 0)}°C
                             </p>
@@ -117,47 +113,47 @@ export default function Forecast() {
                     </p>
                 </div>
 
-                {/* hourly weather data (horizontal scrolling) */}
-                <div className="bg-gray-50 container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
-                    {weatherData?.list.slice(0,12).map((item, i) => ( // 36 hours forecast
-                        <div
-                            key={i}
-                            className="flex flex-col justify-between gap-1 items-center text-xs font-medium min-w-[60px] md:min-w-[80px]"
-                        >
-                            <p className="whitespace-nowrap">
-                                {format(parseISO(item.dt_txt), "HH:mm")}
-                            </p>
-                            <Weatherimage
-                                icon={weatherIcon(item.weather[0].icon, item.dt_txt)}
-                            />
-                            <p>{celsiusConverter(item?.main.temp ?? 0)}°C</p>
-                        </div>
-                    ))}
-                </div>
-
-                {/* additional weather widgets */}
-                <div className=" flex justify-center mt-4 mb-4">
-                    <Container>
-                        <Widgets
-                            sunrise={format(
-                                fromUnixTime(weatherData?.city.sunrise ?? 1719119835),
-                                "HH:mm"
-                            )}
-                            sunset={format(
-                                fromUnixTime(weatherData?.city.sunset ?? 1719119835),
-                                "HH:mm"
-                            )}
-                            airPressure={`${wData?.main.pressure} hPa`}
-                            seaLevel={`${wData?.main.sea_level} hPa`}
-                            visibility={kilometerConverter(wData?.visibility ?? 0)}
-                            humidity={`${wData?.main.humidity}%`}
-                            windSpeed={speedConverter(wData?.wind.speed ?? 0)}
-                            windGust={speedConverter(wData?.wind.gust ?? 0)}
-                        />
-                    </Container>
-                </div>
-            </main>
-            <Footer />
+        {/* hourly weather data (horizontal scrolling) */}
+        <div className="bg-gray-50 container border pt-4 px-4 rounded-md mx-auto flex gap-4 pb-4 items-center mt-5 overflow-x-auto w-full md:w-[800px]">
+          {weatherData?.list.slice(0, 12).map((item, i) => ( // 36 hours forecast to show scrolling
+            <div
+              key={i}
+              className="flex flex-col justify-between gap-1 items-center text-xs font-medium min-w-[60px] md:min-w-[80px]"
+            >
+              <p className="whitespace-nowrap">
+                {format(parseISO(item.dt_txt), "HH:mm")}
+              </p>
+              <Weatherimage
+                icon={weatherIcon(item.weather[0].icon, item.dt_txt)}
+              />
+              <p>{celsiusConverter(item?.main.temp ?? 0)}°C</p>
+            </div>
+          ))}
         </div>
-    );
+
+        {/* additional weather widgets */}
+        <div className="flex justify-center mt-4 mb-4">
+          <Container>
+            <Widgets
+              sunrise={format(
+                fromUnixTime(weatherData?.city.sunrise ?? 1719119835),
+                "HH:mm"
+              )}
+              sunset={format(
+                fromUnixTime(weatherData?.city.sunset ?? 1719119835),
+                "HH:mm"
+              )}
+              airPressure={`${wData?.main.pressure} hPa`}
+              seaLevel={`${wData?.main.sea_level} hPa`}
+              visibility={kilometerConverter(wData?.visibility ?? 0)}
+              humidity={`${wData?.main.humidity}%`}
+              windSpeed={speedConverter(wData?.wind.speed ?? 0)}
+              windGust={speedConverter(wData?.wind.gust ?? 0)}
+            />
+          </Container>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  );
 }
