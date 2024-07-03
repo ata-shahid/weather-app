@@ -7,7 +7,7 @@ import { describe, it, expect } from 'vitest';
 describe('Footer', () => {
     it('renders the footer with the correct text', () => {
         render(<Footer />);
-        const footerElement = screen.getByText('Powered by OpenWeatherApi');
+        const footerElement = screen.getByText('Powered by OpenWeatherMap API');
         expect(footerElement).toBeInTheDocument();
     });
 });
