@@ -1,6 +1,8 @@
-import { FaLocationDot } from "react-icons/fa6";
-import { useRouter } from 'next/router';
+import React from "react";
 import { useState } from 'react';
+import { IoLocationOutline } from "react-icons/io5";
+import { useRouter } from 'next/router';
+
 
 export default function LocationButton() {
     const router = useRouter();
@@ -46,8 +48,8 @@ export default function LocationButton() {
 
     return (
         <div>
-            <FaLocationDot className="text-3xl hover:opacity-50 cursor-pointer ml-2" onClick={getCurrentLocation} />
-            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            <IoLocationOutline data-testid="location" className="text-3xl hover:opacity-50 cursor-pointer ml-2" onClick={getCurrentLocation} />
+            {error && <p className="text-red-500 text-sm ">{error}</p>}
         </div>
     );
 }

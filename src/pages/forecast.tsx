@@ -160,14 +160,6 @@ export default function Forecast() {
             />
           </Container>
         </div>
-        {/* Map link */}
-        <div className="flex mt-2 w-full max-w-lg mb-2 justify-center items-center">
-          <Link href={`/map?lat=${lat}&lon=${lon}&city=${city}`} passHref>
-            <div className="text-white bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 hover:bg-gradient-to-l underline cursor-pointer font-semibold text-lg p-3 border border-gray-700 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-              Try out the map view
-            </div>
-          </Link>
-        </div>
       </main>
       <Footer />
     </div>
