@@ -20,6 +20,7 @@ import { speedConverter } from "@/utils/speedConverter";
 
 import { WeatherData } from "@/types/types";
 import Searchbar from '@/components/SearchBar';
+import Link from 'next/link';
 
 export default function Forecast() {
   const router = useRouter();
@@ -151,6 +152,13 @@ export default function Forecast() {
               windGust={speedConverter(wData?.wind.gust ?? 0)}
             />
           </Container>
+        </div>
+        <div className="mt-4 w-full max-w-lg">
+          <Link href={`/map?lat=${lat}&lon=${lon}&city=${city}`} passHref>
+            <div className="text-blue-500 underline cursor-pointer">
+              Try out Maps
+            </div>
+          </Link>
         </div>
       </main>
       <Footer />
