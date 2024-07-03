@@ -6,8 +6,6 @@ import { addDays } from 'date-fns';
 
 import { SlCalender } from "react-icons/sl";
 import { getDaysDifference } from '@/utils/dateUtils';
-import { error } from 'console';
-
 
 interface CalendarButtonProps {
   selectedDate: Date;
@@ -25,18 +23,20 @@ export default function CalendarButton({ selectedDate, setSelectedDate }: Calend
       setSelectedDate(date);
       const lat = router.query.lat
       const lon = router.query.lon
+      const city = router.query.city
+
       if (lat && lon) {
         const daysDifference = getDaysDifference(date,new Date());
         const index = -daysDifference;
         
         router.push({
           pathname: '/forecast',
-          query: { lat, lon, index }
+          query: { lat, lon, city, index }
         }, undefined, { shallow: false });
       }
       else {
         setShowDatePicker(false);
-        error('Latitude and Longitude are missing');
+        console.error('Latitude and Longitude are required to fetch weather data');
       }
     }
     //setShowDatePicker(false); 
