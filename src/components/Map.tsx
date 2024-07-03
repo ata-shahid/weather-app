@@ -2,7 +2,7 @@
 
 import { MapContainer, TileLayer, LayersControl, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 
 interface MapProps {
   lat: number;
