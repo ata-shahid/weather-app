@@ -50,6 +50,7 @@ const Map = ({ lat, lon }: MapProps) => {
           <LayersControl.Overlay key={weatherLayer.layer} name={weatherLayer.name}>
             <TileLayer
               url={`https://tile.openweathermap.org/map/${weatherLayer.layer}/{z}/{x}/{y}.png?appid=${apiKey}`}
+              attribution='&copy; <a href="https://openweathermap.org">OpenWeatherMap</a> contributors'
             />
           </LayersControl.Overlay>
         ))}
