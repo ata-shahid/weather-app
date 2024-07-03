@@ -1,6 +1,6 @@
 'use client'
 
-import { MapContainer, TileLayer, LayersControl, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, LayersControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useMemo } from 'react';
 
