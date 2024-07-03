@@ -3,7 +3,7 @@
 ## Testing
 
 -Coverage
-In den Unit-Tests, testen wir alle Utils/Helper mit vitest.
+In den Unit-Tests (vitest & React Testing Library) testen wir Utils/Components.
 
 -Ausführen
 E2E  => npx playwright test
