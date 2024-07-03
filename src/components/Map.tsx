@@ -28,7 +28,7 @@ const Map = ({ lat, lon }: MapProps) => {
 
     weatherLayers.forEach(({ name, layer }) => {
       const url = `https://tile.openweathermap.org/map/${layer}/{z}/{x}/{y}.png?appid=${apiKey}`;
-      console.log(`${name} layer URL: ${url}`);
+      
     });
   }, [apiKey, weatherLayers]);
 
