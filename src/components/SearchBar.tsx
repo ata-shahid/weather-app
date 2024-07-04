@@ -9,7 +9,7 @@ import Searchfield from './SearchField';
 
 export default function Searchbar() {
   console.log("This is Searchbar");
-  
+
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const router = useRouter();
 
@@ -32,14 +32,14 @@ export default function Searchbar() {
   };
 
   return (
-    <div className="mt-4 mr-2 flex flex-col md:flex-row gap-1 w-full max-w-2xl mx-auto">
+    <div className="mt-4 flex flex-col md:flex-row w-full mx-2 ">
       <div className="flex flex-row gap-2 justify-center items-center">
         <Searchfield />
-        <LocationButton />
-        <SlGlobe className={`text-4xl hover:opacity-50 cursor-pointer ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`} 
-        onClick={() => router.query.lat && router.query.lon && getMaps()} />
       </div>
-      <div className="flex justify-center items-center md:justify-start md:flex-grow">
+      <div className="flex justify-center items-center gap-2 mt-4 md:justify-start md:flex-grow md:mt-0 ">
+        <LocationButton />
+        <SlGlobe className={`text-3xl hover:opacity-50 cursor-pointer ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`}
+          onClick={() => router.query.lat && router.query.lon && getMaps()} />
         <CalendarButton selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       </div>
     </div>

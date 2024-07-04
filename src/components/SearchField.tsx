@@ -63,7 +63,7 @@ export default function Searchfield() {
             const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${inputValue.trim()}&limit=1&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`);
             const data = await response.json();
             if (data.length === 0) {
-                setError("No suggestions found. Please enter a valid location.");
+                setError("Not found. Please enter a valid location.");
                 return;
             }
             console.log("This is inputValue: " + inputValue);
@@ -132,7 +132,7 @@ export default function Searchfield() {
 
 
     return (
-        <form onSubmit={handleOnSubmit} className="relative items-center h-10 w-full max-w-lg border rounded-md" >
+        <form onSubmit={handleOnSubmit} className="relative items-center h-8 w-full max-w-lg" >
             <input
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
