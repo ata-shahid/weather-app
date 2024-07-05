@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CalendarButton from '@/components/Calendar';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { useRouter } from 'next/router';
 import { getDaysDifference } from '@/utils/dateUtils';
 
@@ -13,6 +13,10 @@ vi.mock('next/router', () => ({
 describe('CalendarButton', () => {
   const setSelectedDate = vi.fn();
   const mockPush = vi.fn();
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
 
   it('renders the calendar icon', () => {
     (useRouter as unknown as ReturnType<typeof vi.fn>).mockReturnValue({

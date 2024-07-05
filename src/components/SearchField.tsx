@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { suggestionType } from '@/types/types';
@@ -8,7 +9,7 @@ import useDebounce from '@/hooks/useDebounce';
 
 
 export default function Searchfield() {
-    const [inputValue, setInputValue] = useState<string>('');
+    const [inputValue, setInputValue] = useState<string>('Enter a location');
     const [error, setError] = useState<string>("");
     const [suggestions, setSuggestions] = useState<suggestionType[]>([]);
     const [, setCity] = useState<string>('');   //state to store city name
@@ -134,6 +135,7 @@ export default function Searchfield() {
     return (
         <form onSubmit={handleOnSubmit} className="relative items-center h-8 w-full max-w-lg" >
             <input
+                data-testid="search"
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
                 value={inputValue}
