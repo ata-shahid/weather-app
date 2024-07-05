@@ -8,8 +8,7 @@ import Searchfield from './SearchField';
 
 
 export default function Searchbar() {
-  console.log("This is Searchbar");
-
+  
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const router = useRouter();
 
