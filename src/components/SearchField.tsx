@@ -9,7 +9,7 @@ import useDebounce from '@/hooks/useDebounce';
 
 
 export default function Searchfield() {
-    const [inputValue, setInputValue] = useState<string>('Enter a location');
+    const [inputValue, setInputValue] = useState<string>('');
     const [error, setError] = useState<string>("");
     const [suggestions, setSuggestions] = useState<suggestionType[]>([]);
     const [, setCity] = useState<string>('');   //state to store city name

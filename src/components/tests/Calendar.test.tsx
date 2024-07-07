@@ -55,20 +55,30 @@ describe('CalendarButton', () => {
 
 
   it('updates date and navigates on date change', async () => {
+    
     (useRouter as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       query: { lat: '50.0694268', lon: '8.1937409' },
       push: mockPush,
     });
+
     render(<CalendarButton selectedDate={new Date()} setSelectedDate={setSelectedDate} />);
     const calendarIcon = screen.getByTestId('calendar-icon');
     fireEvent.click(calendarIcon);
-    const datePickerInput = screen.getByRole('textbox');
-    fireEvent.change(datePickerInput, { target: { value: '07/05/2024' } });
+
+    const today = new Date();
+    const targetDate = new Date();
+    targetDate.setDate(today.getDate() + 2);
+    const formattedTargetDate = targetDate.toLocaleDateString('en-US');
+
+    const datePickerInput = screen.getByRole('textbox') as HTMLInputElement;
+    fireEvent.change(datePickerInput, { target: { value: formattedTargetDate } });
+    const expectedIndex = -getDaysDifference(new Date(targetDate.toDateString()), today);
+
     await waitFor(() => {
-    expect(setSelectedDate).toHaveBeenCalledWith(expect.objectContaining(new Date('2024-07-05')));
+    expect(setSelectedDate).toHaveBeenCalledWith(expect.objectContaining(targetDate));
     expect(mockPush).toHaveBeenCalledWith({
         pathname: '/forecast',
-        query: { lat: '50.0694268', lon: '8.1937409', index: -getDaysDifference(new Date('2024-07-05'), new Date()) },
+        query: { lat: '50.0694268', lon: '8.1937409', index: expectedIndex },
       }, undefined, { shallow: false });
     });
   });
