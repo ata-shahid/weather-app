@@ -63,8 +63,8 @@ export default function Contact() {
     }
 
     // Validate Phone Number
-    const phoneRegex =
-      /^(?:\+?(\d{1,3})[-.\s]?)?((\d{3,4})[-.\s]?(\d{2,3})[-.\s]?(\d{3,4})|\d{4,5}[-.\s]?\d{4,5})$/; // regular expression for phone number
+    const phoneRegex = /^\+?(\d{1,3})?[-.\s]?(?:\(?\d{1,4}\)?[-.\s]?)*\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
+ // regular expression for phone number
     if (formData.phone.trim() === "") {
       newErrors.phone = "Phone number is required";
       valid = false;
