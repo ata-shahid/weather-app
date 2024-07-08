@@ -169,7 +169,7 @@ export default function Contact() {
           <p>
             <strong>Phone:</strong> {formData.phone}
           </p>
-          <p>
+          <p className="break-words whitespace-pre-wrap">
             <strong>Feedback:</strong> {formData.feedback}
           </p>
           <Button onClick={() => setSubmitted(false)} className="w-full mt-4">
