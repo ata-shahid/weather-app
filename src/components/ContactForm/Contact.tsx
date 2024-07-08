@@ -79,12 +79,12 @@ export default function Contact() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+    <div className="max-w-xl mx-auto p-4 sm:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Contact Us</h1>
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="space-y-6 bg-white p-8 rounded-lg shadow-lg"
+          className="space-y-4 sm:space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg"
         >
           <p className="text-red-500 text-sm">* All fields are required</p>
           <FormField
@@ -123,17 +123,17 @@ export default function Contact() {
             error={errors.feedback}
             required
           />
-          <div className="flex justify-between">
-            <Button type="submit" className="w-1/2">
+          <div className="flex flex-col sm:flex-row justify-between gap-4">
+            <Button type="submit" className="w-full sm:w-1/2">
               Submit
             </Button>
-            <Button type="button" onClick={handleBack} className="w-1/6 ml-4">
+            <Button type="button" onClick={handleBack} className="w-full sm:w-1/6">
               Back
             </Button>
           </div>
         </form>
       ) : (
-        <div className="space-y-4 bg-white p-8 rounded-lg shadow-lg">
+        <div className="space-y-4 bg-white p-4 sm:p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-4">Submitted Information</h2>
           <p>
             <strong>Name:</strong> {formData.name}
@@ -147,7 +147,7 @@ export default function Contact() {
           <p>
             <strong>Feedback:</strong> {formData.feedback}
           </p>
-          <Button onClick={() => setSubmitted(false)} className="mt-4">
+          <Button onClick={() => setSubmitted(false)} className="w-full mt-4">
             Edit
           </Button>
         </div>
