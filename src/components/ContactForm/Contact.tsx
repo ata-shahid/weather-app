@@ -162,7 +162,7 @@ export default function Contact() {
               charCount > 300 ? "text-red-500" : "text-gray-500"
             }`}
           >
-            Word count: {charCount}/300
+            Character count: {charCount}/300
           </p>
 
           <div className="flex flex-col sm:flex-row justify-between gap-4">
