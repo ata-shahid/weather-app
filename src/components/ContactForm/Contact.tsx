@@ -43,13 +43,13 @@ export default function Contact() {
     if (formData.email.trim() === '') {
       newErrors.email = 'Email is required';
       valid = false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) { // regular expression for email
       newErrors.email = 'Email address is invalid';
       valid = false;
     }
 
     // Validate Phone Number
-    const phoneRegex = /^(?:\+?(\d{1,3})[-.\s]?)?((\d{3,4})[-.\s]?(\d{2,3})[-.\s]?(\d{3,4})|\d{4,5}[-.\s]?\d{4,5})$/;
+    const phoneRegex = /^(?:\+?(\d{1,3})[-.\s]?)?((\d{3,4})[-.\s]?(\d{2,3})[-.\s]?(\d{3,4})|\d{4,5}[-.\s]?\d{4,5})$/; // regular expression for phone number
     if (formData.phone.trim() === '') {
       newErrors.phone = 'Phone number is required';
       valid = false;
