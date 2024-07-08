@@ -43,8 +43,12 @@ export default function Contact() {
     let newErrors = { name: "", email: "", phone: "", feedback: "" };
 
     // Validate Name
+    const nameRegex = /^[a-zA-Z\s]+$/; // regular expression for alphabetic characters only
     if (formData.name.trim() === "") {
       newErrors.name = "Name is required";
+      valid = false;
+    } else if (!nameRegex.test(formData.name)) {
+      newErrors.name = "Name can only contain alphabetic characters";
       valid = false;
     }
 
