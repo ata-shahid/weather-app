@@ -1,24 +1,32 @@
-
-
-import { FC } from 'react';
+import { FC } from "react";
 
 interface FormFieldProps {
   label: string;
   type: string;
   name: string;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   error: string;
   required?: boolean;
 }
 
-const FormField: FC<FormFieldProps> = ({ label, type, name, value, onChange, error, required }) => {
+const FormField: FC<FormFieldProps> = ({
+  label,
+  type,
+  name,
+  value,
+  onChange,
+  error,
+  required,
+}) => {
   return (
     <div>
       <label className="block mb-2 text-lg font-semibold text-gray-700">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
-      {type === 'textarea' ? (
+      {type === "textarea" ? (
         <textarea
           name={name}
           value={value}
