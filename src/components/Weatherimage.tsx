@@ -1,5 +1,5 @@
+import React from 'react';
 import { cn } from "@/utils/cn";
-import { Iceberg } from "next/font/google";
 import Image from "next/image";
 
 
