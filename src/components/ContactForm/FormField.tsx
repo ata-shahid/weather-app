@@ -1,18 +1,23 @@
-// src/components/ContactForm/FormField.tsx
+
+
+import { FC } from 'react';
 
 interface FormFieldProps {
   label: string;
   type: string;
   name: string;
   value: string;
-  error: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  error: string;
+  required?: boolean;
 }
 
-export function FormField({ label, type, name, value, error, onChange }: FormFieldProps) {
+const FormField: FC<FormFieldProps> = ({ label, type, name, value, onChange, error, required }) => {
   return (
     <div>
-      <label className="block mb-2 text-lg font-semibold text-gray-700">{label}</label>
+      <label className="block mb-2 text-lg font-semibold text-gray-700">
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
       {type === 'textarea' ? (
         <textarea
           name={name}
@@ -32,4 +37,6 @@ export function FormField({ label, type, name, value, error, onChange }: FormFie
       {error && <p className="text-red-500 mt-1">{error}</p>}
     </div>
   );
-}
+};
+
+export default FormField;

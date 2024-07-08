@@ -1,13 +1,14 @@
-// src/components/ContactForm/Button.tsx
+
+import { FC } from 'react';
 
 interface ButtonProps {
-  type: 'button' | 'submit';
+  type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
-  children: React.ReactNode;
   className?: string;
+  children: React.ReactNode;
 }
 
-export function Button({ type, onClick, children, className }: ButtonProps) {
+const Button: FC<ButtonProps> = ({ type = 'button', onClick, className, children }) => {
   return (
     <button
       type={type}
@@ -17,4 +18,6 @@ export function Button({ type, onClick, children, className }: ButtonProps) {
       {children}
     </button>
   );
-}
+};
+
+export default Button;
