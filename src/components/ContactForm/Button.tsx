@@ -13,7 +13,7 @@ const Button: FC<ButtonProps> = ({ type = 'button', onClick, className, children
     <button
       type={type}
       onClick={onClick}
-      className={`py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition duration-300 ${className}`}
+      className={`text-white bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 hover:bg-gradient-to-l font-semibold text-lg py-2 px-4 border border-gray-700 rounded-md shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg ${className}`}
     >
       {children}
     </button>
