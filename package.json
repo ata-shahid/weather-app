@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@types/react-leaflet": "^3.0.0",
     "date-fns": "^3.6.0",
     "leaflet": "^1.9.4",
     "next": "14.2.4",

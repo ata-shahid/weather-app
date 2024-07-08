@@ -1,5 +1,6 @@
 'use client'
 
+import React from "react";
 import { MapContainer, TileLayer, LayersControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useMemo } from 'react';
@@ -44,7 +45,7 @@ const Map = ({ lat, lon }: MapProps) => {
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
+        />
       <LayersControl position="topright">
         {weatherLayers.map((weatherLayer) => (
           <LayersControl.Overlay key={weatherLayer.layer} name={weatherLayer.name}>
