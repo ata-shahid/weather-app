@@ -7,7 +7,7 @@ export default function Footer() {
         <p className="text-xs font-bold tracking-wide">Powered by OpenWeatherMap API</p>
         <span className="mx-2">|</span>
         <Link href="/contact">
-        <p className="text-xs font-bold tracking-wide text-white hover:text-blue-500 transition-colors duration-300">Contact Us</p>
+        <p className="text-md font-bold tracking-wide text-white hover:text-blue-500 transition-colors duration-300">Contact Us</p>
       </Link>
       </footer>
     );
