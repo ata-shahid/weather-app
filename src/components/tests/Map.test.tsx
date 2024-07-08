@@ -11,9 +11,11 @@ describe('Map component', () => {
     expect(screen.getByRole('presentation')).toBeInTheDocument();
   });
 
+
   it('shows error message when API key is not set', () => {
     process.env.NEXT_PUBLIC_WEATHER_API_KEY = '';
     render(<Map lat={12.34} lon={56.78} />);
     expect(screen.getByText(/error: api key is not set/i)).toBeInTheDocument();
   });
+  
 });
