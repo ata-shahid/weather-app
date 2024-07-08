@@ -48,7 +48,7 @@ export default function LocationButton() {
 
     return (
         <div>
-            <IoLocationOutline data-testid="location" className="text-3xl hover:opacity-50 cursor-pointer ml-2" onClick={getCurrentLocation} />
+            <IoLocationOutline data-testid="location" className="text-3xl hover:opacity-50 cursor-pointer ml-2" onClick={getCurrentLocation} title='Current Location'/>
             {error && <p className="text-red-500 text-sm ">{error}</p>}
         </div>
     );

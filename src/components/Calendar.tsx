@@ -47,7 +47,7 @@ export default function CalendarButton({ selectedDate, setSelectedDate }: Calend
       <SlCalender
         className={`text-2xl hover:opacity-50 cursor-pointer ml-2 ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`}
         onClick={() => router.query.lat && router.query.lon && setShowDatePicker(!showDatePicker)}
-        data-testid="calendar-icon"
+        data-testid="calendar-icon" title='Select Date'
       />
       {showDatePicker && (
         <div data-testid="date-picker">

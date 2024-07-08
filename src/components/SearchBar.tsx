@@ -37,7 +37,7 @@ export default function Searchbar() {
       </div>
       <div className="flex justify-center items-center gap-2 mt-4 md:justify-start md:flex-grow md:mt-0 ">
         <LocationButton />
-        <SlGlobe data-testid="maps" className={`text-3xl hover:opacity-50 cursor-pointer ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`}
+        <SlGlobe data-testid="maps" title='See Maps' className={`text-3xl hover:opacity-50 cursor-pointer ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={() => router.query.lat && router.query.lon && getMaps()} />
         <CalendarButton selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       </div>
