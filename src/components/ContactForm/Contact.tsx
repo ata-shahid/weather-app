@@ -79,7 +79,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4 sm:p-8">
+    <div className="max-w-xl mx-auto p-4 sm:p-8 min-h-screen">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Contact Us</h1>
       {!submitted ? (
         <form
@@ -133,7 +133,7 @@ export default function Contact() {
           </div>
         </form>
       ) : (
-        <div className="space-y-4 bg-white p-4 sm:p-8 rounded-lg shadow-lg">
+        <div className="space-y-4 bg-white p-4 sm:p-8 rounded-lg shadow-lg ">
           <h2 className="text-2xl font-bold mb-4">Submitted Information</h2>
           <p>
             <strong>Name:</strong> {formData.name}
