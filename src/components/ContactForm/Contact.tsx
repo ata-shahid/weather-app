@@ -19,6 +19,8 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [charCount, setCharCount] = useState(0); // State to track character count
+
   const router = useRouter();
 
   const handleChange = (
@@ -26,7 +28,13 @@ export default function Contact() {
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  
+    if (name === "feedback") {
+      setCharCount(value.length);
+    }
   };
+  
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,6 +73,9 @@ export default function Contact() {
     if (formData.feedback.trim() === "") {
       newErrors.feedback = "Feedback is required";
       valid = false;
+    } else if (formData.feedback.length > 300) {
+      newErrors.feedback = "Feedback must be 300 characters or less";
+      valid = false;
     }
 
     setErrors(newErrors);
@@ -80,7 +91,9 @@ export default function Contact() {
 
   return (
     <div className="max-w-xl mx-auto p-4 sm:p-8 min-h-screen">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Contact Us</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+        Contact Us
+      </h1>
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
@@ -123,11 +136,23 @@ export default function Contact() {
             error={errors.feedback}
             required
           />
+          <p
+            className={`text-sm ${
+              charCount > 300 ? "text-red-500" : "text-gray-500"
+            }`}
+          >
+            Word count: {charCount}/300
+          </p>
+
           <div className="flex flex-col sm:flex-row justify-between gap-4">
             <Button type="submit" className="w-full sm:w-1/2">
               Submit
             </Button>
-            <Button type="button" onClick={handleBack} className="w-full sm:w-1/6">
+            <Button
+              type="button"
+              onClick={handleBack}
+              className="w-full sm:w-1/6"
+            >
               Back
             </Button>
           </div>
