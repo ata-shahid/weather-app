@@ -93,6 +93,23 @@ export default function Contact() {
     router.back();
   };
 
+  // function to reset the form fields. It clears all the fields and errors.
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      feedback: "",
+    });
+    setErrors({
+      name: "",
+      email: "",
+      phone: "",
+      feedback: "",
+    });
+    setCharCount(0);
+    setSubmitted(false);
+  };
   return (
     <div className="max-w-xl mx-auto p-4 sm:p-8 min-h-screen">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
@@ -151,6 +168,9 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row justify-between gap-4">
             <Button type="submit" className="w-full sm:w-1/2">
               Submit
+            </Button>
+            <Button type="button" onClick={handleReset} className="w-1/6">
+              Reset
             </Button>
             <Button
               type="button"
