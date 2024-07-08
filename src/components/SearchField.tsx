@@ -135,6 +135,7 @@ export default function Searchfield() {
     return (
         <form onSubmit={handleOnSubmit} className="relative items-center h-8 w-full max-w-lg" >
             <input
+                placeholder='Enter a location...'
                 data-testid="search"
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
