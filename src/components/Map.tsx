@@ -4,11 +4,18 @@ import React from "react";
 import { MapContainer, TileLayer, LayersControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect, useMemo } from 'react';
+import { LatLngBoundsLiteral } from "leaflet";
 
 interface MapProps {
   lat: number;
   lon: number;
 }
+
+// Define the max bounds to limit the dragging of the map
+const maxBounds: LatLngBoundsLiteral = [
+  [-90, -180], // South West corner of the map
+  [90, 180] // North East corner of the map
+];
 
 const Map = ({ lat, lon }: MapProps) => {
   const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
@@ -41,7 +48,7 @@ const Map = ({ lat, lon }: MapProps) => {
   
 
   return (
-    <MapContainer center={[lat, lon]} zoom={12} minZoom={minZoom} style={{ height: '100%', width: '100%' }}>
+    <MapContainer maxBounds={maxBounds}  maxBoundsViscosity={1.0}  center={[lat, lon]} zoom={12} minZoom={minZoom} style={{ height: '100%', width: '100%' }} >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
