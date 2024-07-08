@@ -1,3 +1,4 @@
+import React from 'react';
 import { MdOutlineVisibility, MdOutlineWindPower } from "react-icons/md";
 import Widgetdata from "./Widgetdata";
 import { WidgetIconsProps } from "@/types/types";
