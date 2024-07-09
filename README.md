@@ -18,18 +18,16 @@ Schließlich ist ein Kontaktformular vorhanden,falls ein Nutzer eine Beschwerde 
 Im Rahmen der Unit-Tests Vitest und React Testing Library sind genutzt um die Überprüfung der Komponenten, Hooks und Utilities durchzuführen.
 
 ### Ausführen
-
-Unit => npm test
-
-E2E  => npx playwright test
-
+```
+npm test                => Unit
+npx playwright test     => E2E
+```
 
 ## Aufsetzen des Projektes
-
+```
 npm install
-
 npm run dev
-
+```
 
 ## Infos über APIs
 
