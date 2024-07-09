@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { SlGlobe } from "react-icons/sl"
+import { IoMapOutline } from "react-icons/io5";
 import LocationButton from './Location';
 import CalendarButton from './Calendar';
 import Searchfield from './SearchField';
@@ -37,7 +37,7 @@ export default function Searchbar() {
       </div>
       <div className="flex justify-center items-center gap-2 mt-4 md:justify-start md:flex-grow md:mt-0 ">
         <LocationButton />
-        <SlGlobe data-testid="maps" title='See Maps' className={`text-3xl hover:opacity-50 cursor-pointer ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`}
+        <IoMapOutline data-testid="maps" title='See Maps' className={`text-3xl hover:opacity-50 cursor-pointer ${!router.query.lat || !router.query.lon ? 'opacity-50 cursor-not-allowed' : ''}`}
           onClick={() => router.query.lat && router.query.lon && getMaps()} />
         <CalendarButton selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       </div>
