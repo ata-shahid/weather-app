@@ -1,7 +1,6 @@
 /* Components */
-import Header from '@/components/Header';
+import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import Link from 'next/link';
 import router from 'next/router';
 
 
@@ -13,7 +12,7 @@ const Home = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-between bg-gray-100">
-            <Header />
+            <Nav />
             <main className="flex-grow flex flex-col items-center mt-5 px-4">
                 <div className="flex justify-start">
                     <button onClick={handleBack} 

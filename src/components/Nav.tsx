@@ -4,7 +4,7 @@ import Link from "next/link";
 
 type Props = {};
 
-export default function Header({}: Props) {
+export default function Nav({}: Props) {
   return (
     <nav className="sticky top-0 z-50 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white">
       <div className="h-[100px] flex justify-center items-center px-3">

@@ -19,8 +19,10 @@ Im Rahmen der Unit-Tests Vitest und React Testing Library sind genutzt um die Ü
 
 ### Ausführen
 ```
-npm test                => Unit
+npm run dev
 npx playwright test     => E2E
+
+npm test                => Unit
 ```
 
 ## Aufsetzen des Projektes

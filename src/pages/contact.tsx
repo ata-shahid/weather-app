@@ -1,12 +1,12 @@
 import Contact from "@/components/ContactForm/Contact";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Nav from "@/components/Nav";
 
 export default function ContactPage() {
   return (
     <div>
       <div>
-        <Header />
+        <Nav />
       </div>
       <Contact />
       <div>
