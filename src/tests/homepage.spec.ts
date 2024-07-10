@@ -16,7 +16,7 @@ test.describe('Homepage', () => {
     await page.waitForSelector('.mt-4.flex');
     const searchBar = await page.locator('.mt-4.flex');
 
-    const searchField = searchBar.locator('input');
+    const searchField = searchBar.locator('[data-testid="search"]');
     await expect(searchField).toBeVisible();
 
     const locationIcon = searchBar.locator('[data-testid="location"]');
