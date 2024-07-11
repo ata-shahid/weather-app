@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 interface FormFieldProps {
   label: string;
@@ -23,11 +23,12 @@ const FormField: FC<FormFieldProps> = ({
 }) => {
   return (
     <div>
-      <label className="block mb-2 text-lg font-semibold text-gray-700">
+      <label htmlFor={name} className="block mb-2 text-lg font-semibold text-gray-700">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       {type === "textarea" ? (
         <textarea
+          id={name}
           name={name}
           value={value}
           onChange={onChange}
@@ -35,6 +36,7 @@ const FormField: FC<FormFieldProps> = ({
         />
       ) : (
         <input
+          id={name}
           type={type}
           name={name}
           value={value}
