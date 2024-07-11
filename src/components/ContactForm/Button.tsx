@@ -1,6 +1,6 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
-interface ButtonProps {
+  interface ButtonProps {
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
   className?: string;
