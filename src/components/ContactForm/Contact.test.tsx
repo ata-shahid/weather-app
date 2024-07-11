@@ -80,4 +80,22 @@ describe('Contact', () => {
     fireEvent.click(screen.getByText('Back'));
     expect(mockBack).toHaveBeenCalled();
   });
+
+  it('goes back to the form when edit button is clicked', () => {
+    render(<Contact />);
+    fireEvent.change(screen.getByLabelText('Name *'), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText('Email *'), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByLabelText('Phone *'), { target: { value: '1234567890' } });
+    fireEvent.change(screen.getByLabelText('Feedback *'), { target: { value: 'Great service!' } });
+    fireEvent.click(screen.getByText('Submit'));
+    fireEvent.click(screen.getByText('Edit'));
+    expect(screen.getByLabelText('Name *')).toBeInTheDocument();
+    expect((screen.getByLabelText('Name *') as HTMLInputElement).value).toBe('John Doe');
+    expect(screen.getByLabelText('Email *')).toBeInTheDocument();
+    expect((screen.getByLabelText('Email *') as HTMLInputElement).value).toBe('john@example.com');
+    expect(screen.getByLabelText('Phone *')).toBeInTheDocument();
+    expect((screen.getByLabelText('Phone *') as HTMLInputElement).value).toBe('1234567890');
+    expect(screen.getByLabelText('Feedback *')).toBeInTheDocument();
+    expect((screen.getByLabelText('Feedback *') as HTMLTextAreaElement).value).toBe('Great service!');
+  });
 });
