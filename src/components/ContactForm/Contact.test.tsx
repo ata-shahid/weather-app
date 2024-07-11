@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import Contact from "./Contact";
 
-// Mocking the useRouter hook from next/router
+
 const mockBack = vi.fn();
 
 vi.mock("next/router", () => ({
@@ -41,8 +41,6 @@ describe("Contact", () => {
     expect(screen.getByText("Feedback is required")).toBeInTheDocument();
   });
 
-  // test the name format
-
   it("validates the name", () => {
     render(<Contact />);
     fireEvent.change(screen.getByLabelText("Name *"), {
@@ -52,8 +50,16 @@ describe("Contact", () => {
     expect(screen.getByText("Name can only contain alphabetic characters")).toBeInTheDocument();
   });
   
-  // ToDo test for the email Validation
+  
+  it("validates email format", () => {
+    render(<Contact />);
 
+    fireEvent.change(screen.getByLabelText("Email *"), {
+      target: { value: "invalid-email" },
+    });
+    fireEvent.click(screen.getByText("Submit"));
+    expect(screen.getByText("Email address is invalid")).toBeInTheDocument();
+  });
 
   it("validates phone number format", () => {
     render(<Contact />);

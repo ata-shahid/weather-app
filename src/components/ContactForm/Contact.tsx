@@ -119,7 +119,7 @@ export default function Contact() {
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 sm:space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg"
+          className="space-y-4 sm:space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg" noValidate
         >
           <p className="text-red-500 text-sm">* All fields are required</p>
           <FormField
