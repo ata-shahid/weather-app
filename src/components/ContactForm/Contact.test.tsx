@@ -52,7 +52,7 @@ describe("Contact", () => {
     expect(screen.getByText("Name can only contain alphabetic characters")).toBeInTheDocument();
   });
   
-  //test the email format
+  // ToDo test for the email Validation
 
 
   it("validates phone number format", () => {
