@@ -42,6 +42,15 @@ describe("Contact", () => {
   });
 
   // test the name format
+
+  it("validates the name", () => {
+    render(<Contact />);
+    fireEvent.change(screen.getByLabelText("Name *"), {
+      target: { value: "Shahid123" },
+    });
+    fireEvent.click(screen.getByText("Submit"));
+    expect(screen.getByText("Name can only contain alphabetic characters")).toBeInTheDocument();
+  });
   
   //test the email format
 
