@@ -17,10 +17,12 @@ Schließlich ist ein Kontaktformular vorhanden,falls ein Nutzer eine Beschwerde 
 
 Im Rahmen der Unit-Tests Vitest und React Testing Library sind genutzt um die Überprüfung der Komponenten, Hooks und Utilities durchzuführen.
 
+Für den E2E Tests wird Playwright verwendet, um die Benutzererfahrung zu testen, und der Forecast-Test ist gemacht, um die Mocked api antwort (forecastdata.json) zu testen .
+
 ### Ausführen
 ```
 npm run dev
-npm run test:e2e     => E2E
+npm run test:e2e        => E2E
 
 npm test                => Unit
 ```
@@ -54,7 +56,9 @@ Die API bietet viele Arten von Wetterkarten, einschließlich Niederschlag, Wolke
 |      └── ContactForm     => KontaktsFormular Komponenten und Tests
 |  └── hooks               => Custom-hooks und Tests
 |  └── pages               => Seiten
-|      └── api             => API-Routen 	 
-|  └── types               => static types to JavaScript
+|      └── api             => API-Routen (nicht genutzt)
+|  └── styles              => globals für tailwind
+|  └── tests               => E2E tests und json api mocked antwort
+|  └── types               => static types für JavaScript
 |  └── utils               => Nützliche Tools und Tests
 ```
