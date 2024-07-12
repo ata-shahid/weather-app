@@ -11,23 +11,7 @@ dann besteht die Möglichkeit, die fünf Wetterdateischichten zu aktivieren oder
 Schließlich ist ein Kontaktformular vorhanden,falls ein Nutzer eine Beschwerde oder ein Feedback hat.
 
 
-## Testing
-
-### Coverage
-
-Im Rahmen der Unit-Tests Vitest und React Testing Library sind genutzt um die Überprüfung der Komponenten, Hooks und Utilities durchzuführen.
-
-Für den E2E Tests wird Playwright verwendet, um die Benutzererfahrung zu testen, und der Forecast-Test ist gemacht, um die Mocked api antwort (forecastdata.json) zu testen .
-
-### Ausführen
-```
-npm run dev
-npm run test:e2e        => E2E
-
-npm test                => Unit
-```
-
-## Aufsetzen des Projektes
+## Aufsetzen des Projektes(Erforderlich)
 ```
 npm install
 npm run dev
@@ -47,6 +31,23 @@ Die API stellt die Basic-Karte zur Verfügung, welche die Grundlage für die Dar
 
 ### OpenWeather Basic MAP 1.0:
 Die API bietet viele Arten von Wetterkarten, einschließlich Niederschlag, Wolken, Luftdruck, Temperatur und Wind.
+
+
+## Testing
+
+### Coverage
+
+Im Rahmen der Unit-Tests Vitest und React Testing Library sind genutzt um die Überprüfung der Komponenten, Hooks und Utilities durchzuführen.
+
+Für den E2E Tests wird Playwright verwendet, um die Benutzererfahrung zu testen, und der Forecast-Test ist gemacht, um die Mocked api antwort (forecastdata.json) zu testen .
+
+### Ausführen
+```
+npm run dev
+npm run test:e2e        => E2E
+
+npm test                => Unit
+```
 
 
 ## Ordnerstruktur
