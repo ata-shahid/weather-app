@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('maps', () => {
+  test.setTimeout(10000);
+
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
