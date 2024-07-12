@@ -121,7 +121,8 @@ export default function Contact() {
       {!submitted ? (
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 sm:space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg" noValidate
+          className="space-y-4 sm:space-y-6 bg-white p-4 sm:p-8 rounded-lg shadow-lg"
+          noValidate
         >
           <p className="text-red-500 text-sm">* All fields are required</p>
           <FormField
@@ -168,20 +169,22 @@ export default function Contact() {
             Character count: {charCount}/300
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-between gap-4">
-            <Button type="submit" className="w-full sm:w-1/2">
+          <div className="flex flex-col sm:flex-row justify-center items-center sm:justify-between gap-4">
+            <Button type="submit" className="w-1/2 sm:w-1/2">
               Submit
             </Button>
-            <Button type="button" onClick={handleReset} className="w-1/6">
-              Reset
-            </Button>
-            <Button
-              type="button"
-              onClick={handleBack}
-              className="w-full sm:w-1/6"
-            >
-              Back
-            </Button>
+            <div className="flex flex-row gap-4">
+              <Button type="button" onClick={handleReset} className="w-1/2">
+                Reset
+              </Button>
+              <Button
+                type="button"
+                onClick={handleBack}
+                className="w-1/2"
+              >
+                Back
+              </Button>
+            </div>
           </div>
         </form>
       ) : (
