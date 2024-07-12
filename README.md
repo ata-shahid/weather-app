@@ -20,7 +20,7 @@ Im Rahmen der Unit-Tests Vitest und React Testing Library sind genutzt um die Ü
 ### Ausführen
 ```
 npm run dev
-npx playwright test     => E2E
+npm run test:e2e     => E2E
 
 npm test                => Unit
 ```
