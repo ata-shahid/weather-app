@@ -1,4 +1,21 @@
-
+/**
+ * Eine Utility-Funktion, um Klassenamen bedingt zu kombinieren und zusammenzuführen.
+ * 
+ * Diese Funktion akzeptiert eine variable Anzahl von Eingaben, die Strings, Zahlen Booleans, Objekte oder Arrays sein können,
+ * und gibt eine einzelne Zeichenkette mit den kombinierten Klassenamen zurück. 
+ * 
+ * Die Funktion nutzt zwei Hilfsfunktionen:
+ * - `customClsx`: Kombiniert Klassenamen basierend auf den Eingabewerten.
+ * - `customTwMerge`: Führt Tailwind CSS-Klassenamen zusammen und entfernt Duplikate.
+ * 
+ * Der Zweck dieser Funktion ist es, Klassenamen effizient zu verwalten und 
+ * zu verhindern, dass duplizierte oder widersprüchliche Klassen angewendet werden. Dies ist besonders
+ * nützlich in der dynamischen Erstellung von Klassenamen basierend auf Bedingungen.
+ * 
+ * Beispiel:
+ * cn('class1', 'class2', { 'class3': true, 'class4': false }) 
+ * // Gibt 'class1 class2 class3' zurück
+ */
 type ClassValue = string | number | null | boolean | undefined | { [key: string]: any };
 
 function customClsx(...inputs: ClassValue[]): string {
